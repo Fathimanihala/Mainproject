@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'homeindex.html' %}
+{% block body %}
+<form action="" method="get">
+<table class="table table-bordered">
+  <tr>
+    <td>sno</td>
+    <td>routename</td>
+    <td>fromplace</td>
+    <td>Toplace</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.routename }}</td>
+    <td>{{ i.fromplace }}</td>
+    <td>{{ i.toplace }}</td>
+  
+    <td><a href="/myapp/routeedits/{{ i.id }}" class="btn btn-success">Edit</a></td>
+    <td><a href="/myapp/routedelete/{{ i.id }}" class="btn btn-danger">Delete</a></td>
+  </tr>
+    {%  endfor %}
+</table></form>
+{% endblock %}
+
+</body>
+</html>

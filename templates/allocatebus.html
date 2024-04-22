@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'homeindex.html' %}
+{% block body %}
+<form action="/myapp/driveallocate_post/" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+<table class="table table-bordered">
+  <tr>
+    <td>Driver</td>
+    <td><select name="select" class="form-control">
+        {% for i in data %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+        {% endfor %}
+    </select></td>
+  </tr>
+   <tr>
+    <td>Bus</td>
+    <td><select name="select1" class="form-control">
+        {% for i in data1 %}
+            <option value="{{ i.id }}">{{ i.busregno }}</option>
+        {% endfor %}
+    </select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" class="btn btn-success" name="button" id="button" value="add" /></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}
+</body>
+</html>

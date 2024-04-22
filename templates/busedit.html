@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'homeindex.html' %}
+{% block body %}
+<form action="/myapp/busedits_post/" method="post">
+    {% csrf_token %}
+<table class="table table-bordered">
+    <input type="hidden" name="id" value="{{ data.id }}">
+  <tr>
+    <td>Busregno</td>
+    <td><label for="textfield5"></label>
+      <input type="text" required class="form-control" name="textfield5" id="textfield5" value="{{ data.busregno }}"/></td>
+  </tr>
+  <tr>
+    <td>Bus model</td>
+    <td><label for="textfield4"></label>
+      <input type="text" required class="form-control" name="textfield4" id="textfield4" value="{{ data.busmodel }}" /></td>
+  </tr>
+  <tr>
+    <td>chasisnumber</td>
+    <td><label for="textfield3"></label>
+      <input type="text" required class="form-control" name="textfield3" id="textfield3"  value="{{ data.chasisnumber}}"/></td>
+  </tr>
+  <tr>
+    <td>manufacturename</td>
+    <td><label for="textfield2"></label>
+      <input type="text" required class="form-control" name="textfield2" id="textfield2" value="{{ data.manufacturename }}" /></td>
+  </tr>
+  <tr>
+    <td>Route</td>
+    <td><select name="select" class="form-control">
+        {% for i in data1 %}
+        <option value="{{ i.id }}" {% if data.ROUTE.id == i.id %}selected {% endif %}>
+            {{ i.routename }}
+        </option>
+        {% endfor %}
+    </select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" class="btn btn-success" name="button" id="button" value="Edit" /></td>
+  </tr>
+</table>
+
+
+
+</form>
+{% endblock %}
+
+</body>
+</html>

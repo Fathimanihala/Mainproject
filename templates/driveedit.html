@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'homeindex.html' %}
+{% block body %}
+<form action="/myapp/driveedit_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<table class="table table-bordered">
+    <input type="hidden" name="id" value="{{ data.LOGIN.id }}">
+  <tr>
+    <td>Name</td>
+    <td><label for="textfield5"></label>
+      <input type="text" required class="form-control" name="textfield5" id="textfield5" value="{{ data.name }}"/></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><label for="textfield4"></label>
+      <input type="text" required class="form-control" name="textfield4" id="textfield4" value="{{ data.email }}" /></td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td><label for="textfield3"></label>
+      <input type="text" required class="form-control" name="textfield3" id="textfield3"  value="{{ data.phone}}"/></td>
+  </tr>
+  <tr>
+    <td>Image</td>
+    <td><img src="{{ data.image }}" height="100px" width="100px">
+      <input type="file" class="form-control" name="textfi" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" class="btn btn-success" name="button" id="button" value="Edit" /></td>
+  </tr>
+</table>
+
+
+
+</form>
+{% endblock %}
+
+</body>
+</html>
